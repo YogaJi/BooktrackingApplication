@@ -23,14 +23,14 @@ namespace BooktrackingApplication.Pages.Categories
         [BindProperty]
         public Category Category { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.NameToken == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
 
             if (Category == null)
             {
@@ -56,7 +56,7 @@ namespace BooktrackingApplication.Pages.Categories
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(Category.NameToken))
+                if (!CategoryExists(Category.CategoryId))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace BooktrackingApplication.Pages.Categories
             return RedirectToPage("./Index");
         }
 
-        private bool CategoryExists(string id)
+        private bool CategoryExists(int id)
         {
-            return _context.Category.Any(e => e.NameToken == id);
+            return _context.Category.Any(e => e.CategoryId == id);
         }
     }
 }

@@ -21,6 +21,8 @@ namespace BooktrackingApplication.Pages.Books
 
         public IActionResult OnGet()
         {
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryId");
+            
             return Page();
         }
 

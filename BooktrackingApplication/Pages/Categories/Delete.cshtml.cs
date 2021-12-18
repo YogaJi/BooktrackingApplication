@@ -22,14 +22,14 @@ namespace BooktrackingApplication.Pages.Categories
         [BindProperty]
         public Category Category { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.NameToken == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
 
             if (Category == null)
             {
@@ -38,7 +38,7 @@ namespace BooktrackingApplication.Pages.Categories
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {

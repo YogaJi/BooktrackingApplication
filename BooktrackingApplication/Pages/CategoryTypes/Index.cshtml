@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CategoryType[0].Type)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.CategoryType[0].Name)
             </th>
             <th></th>
@@ -23,12 +26,15 @@
 @foreach (var item in Model.CategoryType) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Type">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Type">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Type">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.CategoryTypeID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CategoryTypeID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CategoryTypeID">Delete</a>
             </td>
         </tr>
 }

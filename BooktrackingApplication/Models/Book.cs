@@ -12,9 +12,10 @@ namespace booktrackingapp.Models
         [Key]
         public string ISBN { get; set; }
 
-        [ForeignKey("Category")]
-        public int Category { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
+        public int CategoryId { get; set; }
+        [ForeignKey("Category")]
+        public Category category { get; set; }
     }
 }

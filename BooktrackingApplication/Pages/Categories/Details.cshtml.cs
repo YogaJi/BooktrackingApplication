@@ -21,14 +21,14 @@ namespace BooktrackingApplication.Pages.Categories
 
         public Category Category { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.NameToken == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
 
             if (Category == null)
             {

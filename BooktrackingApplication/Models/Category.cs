@@ -9,10 +9,15 @@ namespace booktrackingapp.Models
 {
     public class Category
     {
-        [ForeignKey("NameToken")]
+        
         [Key]
+        public int CategoryId { get; set; }
         public string NameToken { get; set; }
-        public int Type { get; set; }
+       
         public string Description { get; set; }
+
+        [ForeignKey("CategoryType")]
+        public CategoryType categoryType { get; set; }
+        public int CategoryTypeId { get; set; }
     }
 }

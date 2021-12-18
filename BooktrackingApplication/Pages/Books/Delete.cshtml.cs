@@ -29,7 +29,7 @@ namespace BooktrackingApplication.Pages.Books
                 return NotFound();
             }
 
-            Book = await _context.Book.FirstOrDefaultAsync(m => m.ISBN == id);
+            Book = await _context.Book.Include(b => b.category).FirstOrDefaultAsync(m => m.ISBN == id);
 
             if (Book == null)
             {

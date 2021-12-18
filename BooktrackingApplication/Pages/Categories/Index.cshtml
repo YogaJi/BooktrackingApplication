@@ -14,10 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Category[0].Type)
+                @Html.DisplayNameFor(model => model.Category[0].NameToken)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].CategoryTypeId)
             </th>
             <th></th>
         </tr>
@@ -26,15 +29,18 @@
 @foreach (var item in Model.Category) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @Html.DisplayFor(modelItem => item.NameToken)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.NameToken">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.NameToken">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.NameToken">Delete</a>
+                @Html.DisplayFor(modelItem => item.CategoryTypeId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CategoryId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CategoryId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CategoryId">Delete</a>
             </td>
         </tr>
 }

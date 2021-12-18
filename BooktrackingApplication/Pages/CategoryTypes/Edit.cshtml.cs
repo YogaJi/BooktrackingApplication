@@ -23,14 +23,14 @@ namespace BooktrackingApplication.Pages.CategoryTypes
         [BindProperty]
         public CategoryType CategoryType { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            CategoryType = await _context.CategoryType.FirstOrDefaultAsync(m => m.Type == id);
+            CategoryType = await _context.CategoryType.FirstOrDefaultAsync(m => m.CategoryTypeID == id);
 
             if (CategoryType == null)
             {
@@ -56,7 +56,7 @@ namespace BooktrackingApplication.Pages.CategoryTypes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryTypeExists(CategoryType.Type))
+                if (!CategoryTypeExists(CategoryType.CategoryTypeID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace BooktrackingApplication.Pages.CategoryTypes
             return RedirectToPage("./Index");
         }
 
-        private bool CategoryTypeExists(string id)
+        private bool CategoryTypeExists(int id)
         {
-            return _context.CategoryType.Any(e => e.Type == id);
+            return _context.CategoryType.Any(e => e.CategoryTypeID == id);
         }
     }
 }
