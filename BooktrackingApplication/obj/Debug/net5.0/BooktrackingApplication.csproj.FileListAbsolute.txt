@@ -153,3 +153,8 @@ C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\D
 C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\Categories\Details.cshtml.g.cs
 C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\Categories\Edit.cshtml.g.cs
 C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\Categories\Index.cshtml.g.cs
+C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\CategoryTypes\Create.cshtml.g.cs
+C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\CategoryTypes\Delete.cshtml.g.cs
+C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\CategoryTypes\Details.cshtml.g.cs
+C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\CategoryTypes\Edit.cshtml.g.cs
+C:\Users\DELL\source\repos\BooktrackingApplication\BooktrackingApplication\obj\Debug\net5.0\Razor\Pages\CategoryTypes\Index.cshtml.g.cs
