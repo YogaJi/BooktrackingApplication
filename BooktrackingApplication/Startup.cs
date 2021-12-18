@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BooktrackingApplication.Data;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.AspNetCore.Http;
 
 namespace BooktrackingApplication
 {
@@ -25,6 +27,16 @@ namespace BooktrackingApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCompression(options =>
+            {
+                options.EnableForHttps = true;
+                options.Providers.Add<BrotliCompressionProvider>();
+                options.Providers.Add<GzipCompressionProvider>();
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "application/js", "application/javascript", "text/css" });
+
+            });
+ 
             services.AddRazorPages();
 
             services.AddDbContext<BooktrackingApplicationContext>(options =>
@@ -46,12 +58,21 @@ namespace BooktrackingApplication
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
+            //app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers.Add("Cache-Control", "31536000");
+                }
+            });
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthorization().UseStaticFiles();
 
+            app.UseResponseCompression();
+
+ 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
