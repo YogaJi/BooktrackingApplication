@@ -28,7 +28,7 @@ namespace BooktrackingApplication.Pages.Categories
                 return NotFound();
             }
 
-            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryId == id);
+            Category = await _context.Category.Include(c => c.categoryType).FirstOrDefaultAsync(m => m.CategoryId == id);
 
             if (Category == null)
             {

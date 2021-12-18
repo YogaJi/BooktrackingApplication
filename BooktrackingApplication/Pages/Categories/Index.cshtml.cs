@@ -23,7 +23,7 @@ namespace BooktrackingApplication.Pages.Categories
 
         public async Task OnGetAsync()
         {
-            Category = await _context.Category.ToListAsync();
+            Category = await _context.Category.Include(c => c.categoryType).ToListAsync();
         }
     }
 }

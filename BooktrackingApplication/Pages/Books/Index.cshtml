@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Book[0].ISBN)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Book[0].Title)
             </th>
             <th>
@@ -29,13 +32,16 @@
 @foreach (var item in Model.Book) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.category.Description)
+                @Html.DisplayFor(modelItem => item.category.categoryType)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ISBN">Edit</a> |
